@@ -3,124 +3,43 @@
 %#!pdfplatex jsbook
 %#LPR acroread jsbook.pdf
 
-\documentclass[a5paper]{jsbook}
+\documentclass{jsbook}
 
 \ifnum 42146=\euc"A4A2 %"
  \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}% 
 \else
  \AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}%
 \fi
-\usepackage[dvipdfm,%
-    pdfstartview={FitH -32768},% 描画領域の幅に合わせる［default は全体表示］
-    bookmarks=true,%             しおり付き［default は false］
-    bookmarkstype=toc%           目次情報のファイル［拡張子 toc］を参照
-  ]{hyperref}
+\usepackage[dvipdfm]{hyperref}
 %\usepackage{makeidx}\makeindex
 \usepackage[dvipdfmx]{graphicx}
-%\usepackage{otf}% 
 
-\title{タイトル}
-\author{著者名}
+\title{}
+\author{}
 %\date{}
 
 \begin{document}
 \frontmatter
 \maketitle
 
-\chapter{まえがき}
-
-まえがきです。
+\chapter{}
 
 \tableofcontents
 \mainmatter
 
-%\part{部}
+%\part{}
 
-\chapter{章}
+\chapter{}
 
-\begin{abstract}
-概要です。
-\end{abstract}
-
-章です。
-
-\section{節}
-
-節です\cite{1}。
-
-\subsection{小節}
-
-小節です。図~\ref{f1}を見てください。
-
-\subsubsection{小々節}
-
-小々節です。表~\ref{t1}を見てください。
-
-\paragraph{段落}
-
-段落です。
-
-\subparagraph{小段落}
-
-小段落です。
-
-\begin{figure}[tb]
-\begin{center}
-図です。
-\end{center}
-\caption{図キャプション}
-\label{f1}
-\end{figure}
-
-\begin{table}[tb]
-\caption{表キャプション}
-\label{t1}
-\begin{center}
-\begin{tabular}{c|cc}
-\hline
- & 列 & 列\\
-\hline
-行 & & \\
-行 & & \\
-\hline
-\end{tabular}
-\end{center}
-\end{table}
-
-\chapter{章}
-
-\section{節}
-\subsection{}
-\subsection{}
-
-\chapter{章}
-
-\section{節}
-\section{節}
+\section{}
 
 
 \appendix
-\chapter{付録}
-
-付録です。
-
-\section{節}
-\subsection{}
-\subsection{}
-
-\chapter{章}
-
-\section{節}
-\section{節}
+\chapter{}
 
 
 \begin{thebibliography}{99}
-\bibitem{1}
-参考文献です。
-
-\bibitem{2}
-
-\bibitem{3}
+\bibitem{}
 
 \end{thebibliography}
 

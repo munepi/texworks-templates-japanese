@@ -1,0 +1,84 @@
+% !TEX TS-program = pdfplatex
+% !TEX encoding = UTF-8 Unicode
+%#!pdfplatex beamer
+%#LPR acroread beamer.pdf
+
+\documentclass[17pt,dvipdfm]{beamer}%%default: 11pt; 14pt, 17pt, 20pt
+
+\ifnum 42146=\euc"A4A2 %"
+ \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}% 
+\else
+ \AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}%
+\fi
+%\usetheme{}
+\setbeamertemplate{navigation symbols}{}%dvipdfmx 用
+
+%\usepackage{otf}
+
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\mathversion{bold}
+
+
+\title{タイトル}
+\subtitle{サブタイトル}
+\author{著者}
+\institute{所属}
+\date{日付}
+%\subject{PDF情報のサブタイトル}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{概要}
+\tableofcontents
+\end{frame}
+
+\section{節}
+
+\subsection{小節}
+
+\begin{frame}{タイトル}{サブタイトル}
+
+\begin{itemize}
+\item
+箇条書きです
+
+\item
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+
+\subsection{小節}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+
+\section{節}
+
+\subsection{小節}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+\begin{frame}{タイトル}
+\end{frame}
+
+\end{document}
+
+

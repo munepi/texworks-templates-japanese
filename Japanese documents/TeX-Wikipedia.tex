@@ -1,0 +1,436 @@
+% !TEX TS-program = pdfplatex
+% !TEX encoding = UTF-8 Unicode
+%#!pdfplatex TeX-Wikipedia
+%#LPR acroread TeX-Wikipedia.pdf
+
+\documentclass{jsarticle}
+
+\ifnum 42146=\euc"A4A2 %"
+ \AtBeginDvi{\special{pdf:tounicode EUC-UCS2}}% 
+\else
+ \AtBeginDvi{\special{pdf:tounicode 90ms-RKSJ-UCS2}}%
+\fi
+\usepackage[dvipdfm,%
+    pdfstartview={FitH -32768},% 描画領域の幅に合わせる［default は全体表示］
+    bookmarks=true,%             しおり付き［default は false］
+    bookmarkstype=toc%           目次情報のファイル［拡張子 toc］を参照
+  ]{hyperref}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{color}
+\usepackage{otf}
+
+\usepackage{mflogo}
+\makeatletter
+%% from texmf-dist/tex/latex/amsmath/amsmath.sty
+\@ifundefined{AmS}{%
+  \def\AmS{{\usefont{OMS}{cmsy}{m}{n}%
+    A\kern-.1667em\lower.5ex\hbox{M}\kern-.125emS}}}{}
+\@ifundefined{XyMTeX}{%
+  \def\XyMTeX{X\kern-.3em\raise.5ex\hbox{$\Upsilon$}\kern-.3emM\protect\TeX}}{}
+\makeatother
+\def\DVIPDFMx{DVIPDFM{\itshape x}}
+\def\RM{\leavevmode\hbox{$^{\mbox{\scriptsize\textregistered}}$}}
+
+\title{\TeX}
+\author{Wikipedia}
+
+\begin{document}
+\maketitle
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{ll}
+開発元 & Donald E. Knuth\\
+最新版 & 3.1415926（2008年3月）\\
+対応OS & クロスプラットフォーム\\
+種別 & 組版処理\\
+公式サイト & tug.org\\
+\end{tabular}
+\end{center}
+\end{table}
+
+{\bfseries \TeX}（読み方については、「読み方」の小節を参照）は
+数学者・計算機科学者であるドナルド・クヌース (Donald E.~Knuth) により
+作られた組版処理ソフトウェアである。
+
+\tableofcontents
+
+\section{名称について}
+
+製作者であるクヌースによって以下のように要請されている。
+
+\subsection{表記法}
+
+正しくは ``\TeX'' と表記するが、
+それができない場合には ``TeX'' と表記する（``TEX''と表記するのは誤り）。
+
+\subsection{読み方}
+
+\TeX はギリシャ文字の
+T-E-X（タウ・イプシロン・カイ）であるから、
+「テックス」ではなく、
+ギリシャ語読みの [tex]（「テフ」）のように
+発音するのが正しい。
+しかしそのような発音は難しいので、
+クヌースは「テック」%
+\footnote{古代ギリシャ語読みの [tekh] に近い。}%
+と読んでも構わないとしている。
+日本では「テフ」または「テック」という読み方が広まっている。
+
+\section{機能}
+
+\TeX はマークアップ言語処理系であり、
+チューリング完全性を備えた関数型言語でもある。
+文章そのものと、文章の構造を指定する命令とが混在して
+記述されたテキストファイルを読み込み、
+そこに書かれた命令に従って文章を組版して、
+組版結果を DVI 形式のファイルに書き出す。
+DVI 形式というのは、
+装置に依存しない（device-independent）中間形式である。
+
+DVI ファイルには紙面のどの位置に
+どの文字を配置するかといった情報が書き込まれている。
+実際に紙に印刷したりディスプレイ上に表示したりするためには、
+DVI ファイルを解釈する別のソフトウェアが用いられる。
+DVI ファイルを扱うソフトウェアとして、
+各種のヴューワや PostScript など
+他のページ記述言語へのトランスレータ、
+プリンタドライバなどが利用されている。
+
+組版処理については、行分割およびページ分割位置の判別、
+ハイフネーション、リガチャ、およびカーニングなどを自動で処理でき、
+その自動処理の内容も種々のパラーメータを
+変更することによりカスタマイズできる。
+数式組版についても、多くの機能が盛り込まれている。
+\TeX が文字などを配置する精度は 
+$25.4/(72.27 \times 216)$\,mm（約 5.363\,nm、4,736,286.72\,dpi）である。
+
+\TeX の扱う命令文の中には、
+組版に直接係わる命令文の他に、
+新しい命令文を定義するための命令文もある。
+\TeX のこの機能を使って使用者が
+独自に作った命令文はマクロと呼ばれ、
+こうした独自の改良をマクロパッケージと呼ばれる形で配布できる。
+
+比較的よく知られている\TeX 上のマクロパッケージには、
+クヌース自身によるplain~\TeX、
+一般的な文書記述に優れた\LaTeX（LaTeX）、
+数学的文書用の\AmSTeX などがある。
+一般の使用者は、\TeX を直接使うよりも、
+\TeX に何らかのマクロパッケージを
+読み込ませたものを使うことの方が多い。
+そのため、これらのマクロパッケージのことも
+``\TeX'' と呼ぶ場合があるが、本来は誤用である。
+
+\TeX のマクロパッケージには、他にも次のようなものなどがある。
+\begin{itemize}
+\item 
+\BibTeX（BibTeX）\<……参考文献リストの作成に用いる。
+
+\item 
+\SliTeX（SLiTeX）\<……プレゼンテーション用スライドの作成に用いる%
+\footnote{The \TeX\ Catalogue OnLine, Entry for slides, 
+Ctan Edition（Ring Server によるミラーリング）}。
+
+\item 
+\AmS-\LaTeX（AMS-LaTeX）\<……数学的な文書の記述に強い
+\AmSTeX の機能と\LaTeX の機能を併せ持つ%
+\footnote{AMS-LaTeX---American Mathematical Society}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for amslatex, 
+Ctan Edition（Ring Server によるミラーリング）}。
+
+\item 
+\XyMTeX（XyMTeX）\<……化学構造式の描画に用いる%
+\footnote{XyMTeX 化学構造式描画システム}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for XyMTeX, 
+Ctan Edition（Ring Server によるミラーリング）}。
+
+\item 
+MusiX\TeX（MusiXTeX）\<……楽譜の記述に用いる%
+\footnote{Werner Icking Music Archive: MusiX\TeX\ Files}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for MusiXTeX, 
+Ctan Edition（Ring Server によるミラーリング）}。
+\end{itemize}
+\TeX とそれに関連するプログラム、
+および\TeX のマクロパッケージなどは
+CTAN（Comprehensive \TeX\ Archive Network、
+包括\TeX アーカイブネットワーク）%
+\footnote{the Comprehensive \TeX\ Archive Network}%
+からダウンロードできる。
+
+\section{数式の表示例}
+
+たとえば
+\begin{verbatim}
+-b \pm \sqrt{b^{2} - 4ac} \over 2a
+\end{verbatim}
+は以下のように表示される。
+\begin{eqnarray*}
+ -b \pm \sqrt{b^{2} - 4ac} \over 2a
+\end{eqnarray*}
+
+また、
+\begin{verbatim}
+f(a,b) = \int_{a}^{b}\frac{1 + x}{a + x^{2} + x^{3}}dx
+\end{verbatim}
+は以下のように表示される。
+\begin{eqnarray*}
+ f(a,b) = \int_{a}^{b}\frac{1 + x}{a + x^{2} + x^{3}}dx
+\end{eqnarray*}
+
+\section{生い立ち}
+
+\TeX は、クヌースが自身の著書
+{\itshape The Art of Computer Programming\/}を書いたときに、
+組版の汚さに憤慨し、
+自分自身で心行くまで組版を制御するために作成したとされている。
+開発にあたって、伝統的な組版およびその関連技術に対する
+広範囲にわたる調査を行った。
+その調査結果を取り入れることで、
+\TeX は商業品質の組版ができる柔軟で強力な組版システムになった。
+
+\TeX はフリーソフトウェアであり、
+ソースコードも公開されていて、誰でも改良を加えることができる。
+その改良版の配布も、
+\TeX と区別できるような別名を付けさえすれば許される。
+また、\TeX は非常にバグが少ないソフトウェアとしても有名で、
+ジョーク好きのクヌースが、バグ発見者に対しては
+前回のバグ発見者の2倍の懸賞金をかけるほどである。
+この賞金は小切手で払われるのだが、
+貰った人は記念に取っておく人ばかりなので、
+結局クヌースの出費はほとんど無いという。
+
+クヌースは\TeX のバージョン3を開発した際に、
+これ以上の機能拡張はしないことを宣言した。
+その後は不具合の修正のみがなされ、バージョン番号は
+3.14、3.141、3.1415、\ldots というように付けられている。
+これは更新のたびに数字が円周率に近づいていくようになっていて、
+クヌースの死の時点をもってバージョン $\pi$ として、
+バージョンアップを打ち切るとのことである%
+\footnote{2008年3月28日現在のバージョンは 3.1415926。}。
+
+クヌースは\TeX の開発と同時に、
+\TeX で利用するフォントを作成するためのシステムである 
+\MF も開発した。
+こちらのバージョン番号は2.71、2.718、2.7182、\ldots というように、
+更新のたびに数字がネイピア数に近づいていくようになっている%
+\footnote{2008年3月24日現在のバージョンは 2.718281。}。
+さらにクヌースは \MF を使って、
+\TeX の初期設定欧文フォントである Computer Modern のデザインも行った。
+
+\TeX および\MF は、
+これもクヌース自身によって提唱されている文芸的プログラミング
+（Literate Programming）を実現する WEB というシステムで 
+Pascal へトランスレートされることを前提に記述されている。
+しかし実際には WEB2C で 
+C言語に変換してコンパイルされ実行形式を得ることが多い。
+
+\section{\TeX の日本語化}
+
+日本語組版処理のできる日本語版の\TeX および\LaTeX には、
+アスキー・メディアワークスによる\pTeX（pTeX）および\pLaTeX（pLaTeX）と、
+NTTの斉藤康己によるNTT~J\TeX（NTT JTeX）%
+\footnote{NTT J\TeX は
+千葉大学の櫻井貴文によってUNIXシステムに移植され、
+メンテナンスされている。
+現在、「Software by Takafumi Sakurai」で公開されている。}%
+およびNTT~J\LaTeX（NTT~JLaTeX）などがある。
+
+\TeX の日本語対応において技術的に最も大きな課題は、
+複数バイト文字コードへの対応である。
+\pTeX（および前身の日本語\TeX）は、
+JIS~X~0208 を文字集合とした文字コード
+（ISO-2022-JP、EUC-JP、および Shift\_JIS）を直接扱う。
+DVI フォーマットは元々16ビット以上の文字コードを
+格納できる仕様が含まれていた。
+しかしオリジナルの英語版では使われていなかったため、
+既存プログラムの多くは\pTeX が出力する DVI ファイルを処理できない。
+またフォントに関係するファイルフォーマットが拡張されている。
+これに対して NTT~J\TeX は、
+複数の1バイト文字セットに分割することで対応している。
+例えば、ひらがなとカタカナは内部的には
+別々の1バイト文字セットとして扱われる。
+このためにオリジナルの英語版からの変更が小さく、
+移植も比較的容易である。
+ファイルフォーマットが同じなので
+英語版のプログラムで DVI ファイル等を処理することもできる。
+しかし後述するフォントのマッピングの問題があるため、
+実際には多くの使用者が NTT~J\TeX 用に拡張されたプログラムを使っている。
+
+使用する日本語用フォントについては 
+\pTeX が写研フォントの使用を、
+NTT~J\TeX が大日本印刷フォントの使用を前提としており、
+それぞれフォントメトリック情報
+（フォントの文字寸法の情報）をバンドルして配布している。
+しかし有償であるこれらのフォントのグリフ情報を持っていなくても、
+画面表示や印刷の際に使用者が
+利用できる他の日本語用フォントで代用することができる。
+つまり写研フォントや大日本印刷フォントの
+フォントメトリック情報を用いて文字の位置を固定し、
+画面表示や印刷には他の日本語用フォントを用いていることが可能である。
+このため日本語化された\TeX 関係プログラムのほとんどは、
+画面表示や印刷で実際に使うフォントを選択できるように、
+フォントのマッピング（対応付け）を定義する機能を持っている。
+
+歴史的には、アスキーが日本語\TeX の 
+PC-9800 シリーズ対応版を販売したために
+個人の使用者を中心に普及した。
+一方、NTT~J\TeX は
+元の英語版プログラムからの変更が比較的小さいという利点を受けて、
+UNIX\RM および UNIX 互換 OS を使う大学や研究機関の関係者を中心に普及した。
+
+しかし現在では次に挙げる理由から、
+日本語対応\TeX として\pTeX が使われていることが多い。
+
+UNIX\RM 用、および UNIX 互換 OS 用の
+主な日本語対応\TeX 配布形態である 
+ptexlive%
+\footnote{ptexlive Wiki}%
+やptetex3%
+\footnote{ptetex---te\TeX 用日本語パッチ集}%
+\footnote{ptetex Wiki}%
+が\pTeX のみを採用している。
+Microsoft Windows 用の主な日本語対応\TeX 配布形態である 
+W32\TeX%
+\footnote{W32\TeX\ (Japanese page)}%
+が\pTeX を扱える（NTT~J\TeX も扱える）。
+\pTeX の扱い方を解説する文献の方が、
+NTT~J\TeX のものに比べて、
+出版物と Web 上文書の両方で多い。
+\pTeX は縦組みにも対応しているが、
+NTT~J\TeX は対応していない。
+
+\section{\TeX による組版の作業工程}
+
+\TeX を利用して組版を行うには、通常次のような作業工程を取る。
+\begin{enumerate}
+\item 
+テキストエディタなどを用いて、
+文章に組版用命令文を織り込んだソースファイルを作成する。
+
+\item 
+OS のコマンドラインから 
+``tex FileName.tex'' などと入力して
+\TeX を起動し、DVI ファイルを生成させる。
+\begin{itemize}
+\item
+ソースファイルにエラーがあれば、修正して再度\TeX を起動する。
+\end{itemize}
+
+\item 
+DVI ウェアとよばれる DVI 命令文を解するソフトウェアを用いて
+組版結果を表示し、確認する。
+\begin{itemize}
+\item 
+DVI ウェアには xdvi/xdvik や 
+dviout for Windows%
+\footnote{dviout/dviprt 開発室---Oshima Laboratory}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for dviout, 
+Ctan Edition（Ring Server によるミラーリング）}%
+などの DVI ヴューア、
+Dvips(k) や dvipdfm/\DVIPDFMx などの
+ファイル形式変換ソフトウェアなどがある%
+\footnote{各 DVI ウェアの間には
+DVI ファイルの解釈・表示について互換性がない場合がある。
+特に、ある DVI ウェアに依存したパッケージを
+ソースファイルに用いるなどして、
+その DVI ウェア用の専用命令文（special）を
+埋め込んで作成した DVI ファイルは、
+当然ながらその専用命令文を解釈可能な DVI ウェアでなければ
+画面表示・印刷などが正しくできない。}。
+
+\item 
+DVI ファイルを DVI ヴューアで画面表示または印刷する、
+あるいは PDF や PostScript に変換して画面表示または印刷することで、
+組版結果を確認する。
+
+\item 
+修正の必要があれば、ソースファイルを修正して再度 DVI ファイルを作成、確認する。
+\end{itemize}
+\end{enumerate}
+
+この間、作業工程が変わるたびに
+それぞれのプログラムを切り替えたり、
+扱う文書が大きいと章ごとにソースファイルを分割して管理したりと、
+比較的煩雑な作業を伴う。
+そのため、この工程に係わる各種のプログラムや
+ソースファイルの管理を一元的に行う\TeX 用の統合環境がいくつか作成されている。
+
+\subsection{GUI 環境と\TeX}
+
+GUI は PC の普及に一役買ったが、
+同時に GUI しか触ったことのない PC 利用者が増加した。
+そのような利用者が、
+コマンドラインでの操作を余儀なくされる\TeX を
+非常に扱いづらく感じてしまうのは否めないことである。
+このため、GUI に特化した\TeX 用統合環境もいくつか作成されている%
+\footnote{代表的なアプリケーションとして、LyXなどがある}。
+
+\section{関連ソフトウェア}
+
+xdvi/xdvik、dviout for Windows、
+Dvips(k)、dvipdfm/\DVIPDFMx などの DVI ウェア。
+\TeX 文書の文献管理のための\BibTeX や索引作成のための MakeIndex%
+\footnote{The \TeX\ Catalogue OnLine, Entry for MakeIndex, 
+Ctan Edition（Ring Server によるミラーリング）}。
+pdf\TeX（pdfTeX）、Con{\TeX}t（ConTeXt）、
+$\varepsilon$-\TeX（e-TeX）%
+\footnote{The \TeX\ Catalogue OnLine, Entry for etex, 
+Ctan Edition（Ring Server によるミラーリング）}%
+などの機能拡張版\TeX。
+Omega%
+\footnote{The \TeX\ Catalogue OnLine, Entry for Omega, 
+Ctan Edition（Ring Server によるミラーリング）}%
+（lambda）、Aleph%
+\footnote{The \TeX\ Catalogue OnLine, Entry for aleph, Ctan Edition（Ring Server によるミラーリング）}%
+（lamed）などの、
+Unicodeをベースとした多言語拡張版\TeX。
+Kile、TeXShop%
+\footnote{TeXShop---Richard Koch}
+\footnote{The \TeX\ Catalogue OnLine, Entry for TeXShop, 
+Ctan Edition（Ring Server によるミラーリング）}、
+EasyTeX%
+\footnote{\TeX 入門 EasyTeX---中川 仁}、
+WinShellなどの統合環境や、
+TeXmacs%
+\footnote{Welcome to GNU TeXmacs (FSF GNU project)}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for TeXmacs, 
+Ctan Edition（Ring Server によるミラーリング）}、
+LyX などの GUI フロントエンド。
+\TeX\ Live%
+\footnote{\TeX\ Live---\TeX\ Users Group}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for texlive, 
+Ctan Edition（Ring Server によるミラーリング）}%
+や te\TeX（teTeX）%
+\footnote{The te\TeX\ Homepage}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for te\TeX, 
+Ctan Edition（Ring Server によるミラーリング）}%
+などの \TeX 配布形態や、
+mimeTeX%
+\footnote{mimeTeX quickstart}%
+\footnote{The \TeX\ Catalogue OnLine, Entry for mimeTeX, 
+Ctan Edition（Ring Server によるミラーリング）}%
+などの\TeX サブセット。
+Textext%
+\footnote{Textext---Pauli Virtanen}、
+InkLaTeX%
+\footnote{Inkscape de \LaTeX}%
+などの Inkscape への\TeX プラグイン。
+KETpic は Maxima 上、Scilab 上、Mathematica 上、
+および Maple 上で\TeX 描画コードである tpic specials を
+生成するマクロパッケージ。
+MathType version~6.5 以降では、
+Microsoft Word 上に書かれた\TeX の命令文を
+直接数式に変換できるようになった。
+現時点では PowerPoint 上での\TeX の命令文による
+直接的な数式編集はできない。
+
+\begin{thebibliography}{9}
+\bibitem{1}
+奥村晴彦『［改訂第4版］\LaTeXe 美文書作成入門』技術評論社、2007年、ISBN 978-4-7741-2984-6
+
+\bibitem{2}
+大野義夫 編『\TeX 入門』共立出版、1989年、ISBN 978-4-320-02488-5
+\end{thebibliography}
+
+\end{document}

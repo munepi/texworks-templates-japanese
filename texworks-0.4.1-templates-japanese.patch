@@ -1,7 +1,7 @@
 diff -up texworks-0.4.1/res/resfiles.qrc.vine texworks-0.4.1/res/resfiles.qrc
 --- texworks-0.4.1/res/resfiles.qrc.vine	2011-05-27 14:30:46.000000000 +0900
-+++ texworks-0.4.1/res/resfiles.qrc	2011-06-25 21:47:35.127729757 +0900
-@@ -24,6 +24,10 @@
++++ texworks-0.4.1/res/resfiles.qrc	2011-06-26 10:40:16.504241369 +0900
+@@ -24,6 +24,13 @@
  <file>resfiles/templates/Beamer presentations/conference-ornate-20min.en.tex</file>
  <file>resfiles/templates/Beamer presentations/generic-ornate-15min-45min.en.tex</file>
  <file>resfiles/templates/Beamer presentations/speaker_introduction-ornate-2min.en.tex</file>
@@ -9,8 +9,11 @@ diff -up texworks-0.4.1/res/resfiles.qrc.vine texworks-0.4.1/res/resfiles.qrc
 +<file>resfiles/templates/Japanese documents/TeX-Wikipedia.tex</file>
 +<file>resfiles/templates/Japanese documents/beamer.tex</file>
 +<file>resfiles/templates/Japanese documents/jsbook.tex</file>
++<file>resfiles/templates/Japanese documents/samples/jsarticle.tex</file>
++<file>resfiles/templates/Japanese documents/samples/beamer.tex</file>
++<file>resfiles/templates/Japanese documents/samples/jsbook.tex</file>
  <file>resfiles/templates/More LaTeX classes/KOMA-letter.tex</file>
  <file>resfiles/templates/More LaTeX classes/memoir.tex</file>
  <file>resfiles/templates/XeLaTeX documents/article-fontspec.tex</file>
 
-Diff finished.  Sat Jun 25 21:47:38 2011
+Diff finished.  Sun Jun 26 10:40:28 2011
